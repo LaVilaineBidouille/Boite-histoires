@@ -82,6 +82,18 @@ GND               noir
   04AE83A26A2681
   04AD83A26A2681
   04B983A26A2681
+
+  ID des cartes Vilaine Bidouille
+  04111D14BD2A81
+  04EF2314BD2A81
+  04C23314BD2A81
+  04B32C14BD2A81
+  04984214BD2A81
+  04C44A14BD2A81
+  04DE5114BD2A81
+  04665B14BD2A81
+  043C3D14BD2A81
+
   
 */
 
@@ -234,16 +246,16 @@ void PisteSelect(uint8_t *data, uint8_t length) // Selection piste selon carte r
 
      piste = 99; // si la carte n'est pas déclarée on lira la piste 99
 
-     if (idCard.equals("049C83A26A2681")) piste = 1;  
-     if (idCard.equals("04A883A26A2681")) piste = 2;
-     if (idCard.equals("04A783A26A2681")) piste = 3;
-     if (idCard.equals("04A683A26A2681")) piste = 4;
-     if (idCard.equals("04A583A26A2681")) piste = 5;
-     if (idCard.equals("04B183A26A2681")) piste = 6;
-     if (idCard.equals("04AF83A26A2681")) piste = 7;
-     if (idCard.equals("04AE83A26A2681")) piste = 8;
-     if (idCard.equals("04AD83A26A2681")) piste = 9;
-     if (idCard.equals("04B983A26A2681")) piste = 10;
+     if (idCard.equals("047E6214BD2A81")) piste = 1;   // RFID Vilaine Bidouille
+     if (idCard.equals("04111D14BD2A81")) piste = 2;
+     if (idCard.equals("04EF2314BD2A81")) piste = 3;
+     if (idCard.equals("04C23314BD2A81")) piste = 4;
+     if (idCard.equals("04B32C14BD2A81")) piste = 5;
+     if (idCard.equals("04984214BD2A81")) piste = 6;
+     if (idCard.equals("04C44A14BD2A81")) piste = 7;
+     if (idCard.equals("04DE5114BD2A81")) piste = 8;
+     if (idCard.equals("04665B14BD2A81")) piste = 9;
+     if (idCard.equals("043C3D14BD2A81")) piste = 10;
 }
   
 //*****************************************************************************************//
@@ -320,7 +332,7 @@ void loop(){
       // Serial.print("Busy  : "); Serial.println(digitalRead(BUSY_PIN)); 
 
      
-      if (fin_lecture == 0 && digitalRead(BUSY_PIN) == 1 && EnPause==0){       // on denombre le nombre d'evenemnt consécutifs indiquant une fin de lecture cela pour compenser le décalage d'info sur la broche busy
+      if (fin_lecture == 0 && digitalRead(BUSY_PIN) == 1 && EnPause==0){       // on denombre le nombre d'evenements consécutifs indiquant une fin de lecture cela pour compenser le décalage d'info sur la broche busy
         
         if ((millis()-lastEvent) < 300 ){
           event++;
@@ -342,7 +354,7 @@ void loop(){
   }
   
   Serial.println("Retrait de la carte"); 
-  myDFPlayer.stop();                           // on stoppe la lecture 
+  myDFPlayer.stop();                           // on stoppe la lecture avec la détection retrait carte
     
   delay(1000); //change value if you want to read cards faster
  
